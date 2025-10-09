@@ -122,13 +122,11 @@
         "bucket_name": "amplify-d211617nb2m4es-ma-amplifyteamdrivebucket28-yl5butyvhjq8",
         "aws_region": "us-east-2",
         "paths": {
-          "user-videos/*": {
+          "user-videos/{identity_id}/*": {
             "guest": [
               "get",
               "list"
-            ]
-          },
-          "user-videos/${cognito-identity.amazonaws.com:sub}/*": {
+            ],
             "entityidentity": [
               "get",
               "list",

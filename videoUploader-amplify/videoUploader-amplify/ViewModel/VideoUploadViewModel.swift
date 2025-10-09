@@ -5,4 +5,8 @@
 //  Created by Alexander Jackson on 10/8/25.
 //
 
-import Foundation
+import Combine
+
+final class VideoUploadViewModel: ObservableObject {
+    
+}

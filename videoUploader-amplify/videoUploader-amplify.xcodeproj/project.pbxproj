@@ -6,6 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		50176C8D2E971BB6008CFCBA /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 50176C8C2E971BB6008CFCBA /* AWSAPIPlugin */; };
+		50176C8F2E971BB6008CFCBA /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 50176C8E2E971BB6008CFCBA /* AWSCognitoAuthPlugin */; };
+		50176C912E971BB6008CFCBA /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 50176C902E971BB6008CFCBA /* AWSS3StoragePlugin */; };
+		50176C932E971BB6008CFCBA /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 50176C922E971BB6008CFCBA /* Amplify */; };
+		50176C962E971BF9008CFCBA /* Authenticator in Frameworks */ = {isa = PBXBuildFile; productRef = 50176C952E971BF9008CFCBA /* Authenticator */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		50176C6D2E971A75008CFCBA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +60,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50176C8D2E971BB6008CFCBA /* AWSAPIPlugin in Frameworks */,
+				50176C962E971BF9008CFCBA /* Authenticator in Frameworks */,
+				50176C932E971BB6008CFCBA /* Amplify in Frameworks */,
+				50176C8F2E971BB6008CFCBA /* AWSCognitoAuthPlugin in Frameworks */,
+				50176C912E971BB6008CFCBA /* AWSS3StoragePlugin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +125,11 @@
 			);
 			name = "videoUploader-amplify";
 			packageProductDependencies = (
+				50176C8C2E971BB6008CFCBA /* AWSAPIPlugin */,
+				50176C8E2E971BB6008CFCBA /* AWSCognitoAuthPlugin */,
+				50176C902E971BB6008CFCBA /* AWSS3StoragePlugin */,
+				50176C922E971BB6008CFCBA /* Amplify */,
+				50176C952E971BF9008CFCBA /* Authenticator */,
 			);
 			productName = "videoUploader-amplify";
 			productReference = 50176C5F2E971A73008CFCBA /* videoUploader-amplify.app */;
@@ -195,6 +213,10 @@
 			);
 			mainGroup = 50176C562E971A73008CFCBA;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				50176C8B2E971BB6008CFCBA /* XCRemoteSwiftPackageReference "amplify-swift" */,
+				50176C942E971BF9008CFCBA /* XCRemoteSwiftPackageReference "amplify-ui-swift-authenticator" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 50176C602E971A73008CFCBA /* Products */;
 			projectDirPath = "";
@@ -418,13 +440,14 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Debug;
@@ -462,13 +485,14 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Release;
@@ -615,6 +639,53 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		50176C8B2E971BB6008CFCBA /* XCRemoteSwiftPackageReference "amplify-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/amplify-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.51.1;
+			};
+		};
+		50176C942E971BF9008CFCBA /* XCRemoteSwiftPackageReference "amplify-ui-swift-authenticator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/amplify-ui-swift-authenticator";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		50176C8C2E971BB6008CFCBA /* AWSAPIPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50176C8B2E971BB6008CFCBA /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSAPIPlugin;
+		};
+		50176C8E2E971BB6008CFCBA /* AWSCognitoAuthPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50176C8B2E971BB6008CFCBA /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSCognitoAuthPlugin;
+		};
+		50176C902E971BB6008CFCBA /* AWSS3StoragePlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50176C8B2E971BB6008CFCBA /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSS3StoragePlugin;
+		};
+		50176C922E971BB6008CFCBA /* Amplify */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50176C8B2E971BB6008CFCBA /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = Amplify;
+		};
+		50176C952E971BF9008CFCBA /* Authenticator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50176C942E971BF9008CFCBA /* XCRemoteSwiftPackageReference "amplify-ui-swift-authenticator" */;
+			productName = Authenticator;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 50176C572E971A73008CFCBA /* Project object */;
 }

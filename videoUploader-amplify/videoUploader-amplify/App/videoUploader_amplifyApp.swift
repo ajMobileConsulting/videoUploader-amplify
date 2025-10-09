@@ -8,6 +8,7 @@
 import Amplify
 import Authenticator
 import AWSCognitoAuthPlugin
+import AWSS3StoragePlugin
 import SwiftUI
 
 @main
@@ -15,6 +16,7 @@ struct videoUploader_amplifyApp: App {
     init() {
         do {
             try Amplify.add(plugin: AWSCognitoAuthPlugin())
+            try Amplify.add(plugin: AWSS3StoragePlugin())
             try Amplify.configure(with: .amplifyOutputs)
         } catch {
             print("Unable to configure Amplify \(error.localizedDescription)")

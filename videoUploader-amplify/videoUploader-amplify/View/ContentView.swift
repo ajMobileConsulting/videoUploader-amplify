@@ -6,6 +6,7 @@
 //
 
 import AVKit
+import AWSPluginsCore
 import Amplify
 import Authenticator
 import PhotosUI
@@ -32,28 +33,52 @@ struct ContentView: View {
                         )
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
-                Button("Upload Media") {
 
+                Button("Upload Media") {
                     Task {
                         do {
-                            let userId = try await Amplify.Auth.getCurrentUser()
-                                .userId
-                            let key = "user-videos/\(userId)/sample.mov"
+                            guard
+                                let user = try? await Amplify.Auth
+                                    .getCurrentUser()
+                            else {
+                                print("❌ No authenticated user.")
+                                return
+                            }
 
-                            guard let url = url else { return }
+                            guard
+                                let url = Bundle.main.url(
+                                    forResource: "waterfall",
+                                    withExtension: "mov"
+                                )
+                            else {
+                                print("❌ Local file not found.")
+                                return
+                            }
+
+                            // Use correct path based on your Storage definition
+                            let key = "user-videos/\(user.userId)/sample.mov"
+
                             let result = Amplify.Storage.uploadFile(
-                                path: .fromString("waterfall"), local: url
+                                path: .fromString(key),
+                                local: url,
                             )
-                            print("✅ Uploaded: \(result)")
+                            for await progress in await result.progress {
+                                print("Progress: \(progress)")
+                            }
+                            
+                            let uploadSuccess = try await result.value
+
+                            print("✅ Uploaded successfully with key: \(uploadSuccess)")
                         } catch {
                             print("❌ Upload failed: \(error)")
                         }
                     }
                 }
-            }
-            Button("Sign out") {
-                Task {
-                    await state.signOut()
+
+                Button("Sign out") {
+                    Task {
+                        await state.signOut()
+                    }
                 }
             }
         }

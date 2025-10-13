@@ -34,15 +34,15 @@ const schema = a.schema({
     /*========
       Queries
     =========*/
-    // getAllWPPages: a.query()
-    // .returns(a.ref("WPPages").array())
-    // .authorization(allow => [allow.publicApiKey()]) // keep same auth for now
-    // .handler(
-    // a.handler.custom({
-    //   dataSource: "BeadFormations",
-    //   entry: "./listPages.ts", // point to your new handler file
-    // })
-    // ),
+    getAllWPPages: a.query()
+    .returns(a.ref("WPPages").array())
+    .authorization(allow => [allow.publicApiKey()]) // keep same auth for now
+    .handler(
+    a.handler.custom({
+      dataSource: "BeadFormations",
+      entry: "./listPages.ts", // point to your new handler file
+    })
+    ),
 
 
     /*=======

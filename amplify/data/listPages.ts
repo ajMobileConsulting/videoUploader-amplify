@@ -16,9 +16,22 @@ export function response(ctx: Context) {
   if (ctx.error) {
     return util.error(ctx.error.message, ctx.error.type);
   }
-  if (ctx.result.statusCode === 200) {
-    return JSON.parse(ctx.result.body).data;
+
+  const { statusCode, body } = ctx.result;
+
+  if (statusCode === 200) {
+    // WordPress returns a top-level array of pages
+    const pages = JSON.parse(body);
+
+    // Optionally transform the data for your GraphQL shape
+    return pages.map((page: any) => ({
+      id: page.id,
+      date: page.date,
+      date_gmt: page.date_gmt,
+      title: page.title?.rendered ?? "",
+      content: page.content?.rendered ?? "",
+    }));
   } else {
-    return util.appendError(ctx.result.body, "ctx.result.statusCode");
+    return util.appendError(body, `${statusCode}`);
   }
 }

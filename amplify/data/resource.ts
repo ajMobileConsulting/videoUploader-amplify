@@ -23,7 +23,7 @@ const schema = a.schema({
     // }),
 
 
-    WPPages: a.customType({
+    WPPage: a.customType({
       id: a.integer(),
       date: a.string(),
       date_gmt: a.string(),
@@ -35,7 +35,7 @@ const schema = a.schema({
       Queries
     =========*/
     getAllWPPages: a.query()
-    .returns(a.ref("WPPages").array())
+    .returns(a.ref("WPPage").array())
     .authorization(allow => [allow.publicApiKey()]) // keep same auth for now
     .handler(
     a.handler.custom({

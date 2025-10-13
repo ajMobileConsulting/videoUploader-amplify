@@ -25,8 +25,8 @@ const schema = a.schema({
 
     WPPages: a.customType({
       id: a.integer(),
-      date: a.date(),
-      date_gmt: a.datetime(),
+      date: a.string(),
+      date_gmt: a.string(),
       title: a.string(),
       content: a.string()
     }),

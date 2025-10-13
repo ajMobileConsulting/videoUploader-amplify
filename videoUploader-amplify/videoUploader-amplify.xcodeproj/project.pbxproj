@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		501371EC2E98B1B10078B521 /* AWSDataStorePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 501371EB2E98B1B10078B521 /* AWSDataStorePlugin */; };
 		50176C8D2E971BB6008CFCBA /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 50176C8C2E971BB6008CFCBA /* AWSAPIPlugin */; };
 		50176C8F2E971BB6008CFCBA /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 50176C8E2E971BB6008CFCBA /* AWSCognitoAuthPlugin */; };
 		50176C912E971BB6008CFCBA /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 50176C902E971BB6008CFCBA /* AWSS3StoragePlugin */; };
@@ -63,6 +64,7 @@
 				50176C8D2E971BB6008CFCBA /* AWSAPIPlugin in Frameworks */,
 				50176C962E971BF9008CFCBA /* Authenticator in Frameworks */,
 				50176C932E971BB6008CFCBA /* Amplify in Frameworks */,
+				501371EC2E98B1B10078B521 /* AWSDataStorePlugin in Frameworks */,
 				50176C8F2E971BB6008CFCBA /* AWSCognitoAuthPlugin in Frameworks */,
 				50176C912E971BB6008CFCBA /* AWSS3StoragePlugin in Frameworks */,
 			);
@@ -85,12 +87,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		501371EA2E98B1B10078B521 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		50176C562E971A73008CFCBA = {
 			isa = PBXGroup;
 			children = (
 				50176C612E971A73008CFCBA /* videoUploader-amplify */,
 				50176C6F2E971A75008CFCBA /* videoUploader-amplifyTests */,
 				50176C792E971A75008CFCBA /* videoUploader-amplifyUITests */,
+				501371EA2E98B1B10078B521 /* Frameworks */,
 				50176C602E971A73008CFCBA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,6 +140,7 @@
 				50176C902E971BB6008CFCBA /* AWSS3StoragePlugin */,
 				50176C922E971BB6008CFCBA /* Amplify */,
 				50176C952E971BF9008CFCBA /* Authenticator */,
+				501371EB2E98B1B10078B521 /* AWSDataStorePlugin */,
 			);
 			productName = "videoUploader-amplify";
 			productReference = 50176C5F2E971A73008CFCBA /* videoUploader-amplify.app */;
@@ -660,6 +671,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		501371EB2E98B1B10078B521 /* AWSDataStorePlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50176C8B2E971BB6008CFCBA /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSDataStorePlugin;
+		};
 		50176C8C2E971BB6008CFCBA /* AWSAPIPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 50176C8B2E971BB6008CFCBA /* XCRemoteSwiftPackageReference "amplify-swift" */;

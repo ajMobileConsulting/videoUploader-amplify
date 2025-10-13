@@ -1,0 +1,236 @@
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+type ModelTodoConnection @aws_cognito_user_pools @aws_iam {
+  items: [Todo]!
+  nextToken: String
+}
+
+type Mutation {
+  createTodo(condition: ModelTodoConditionInput, input: CreateTodoInput!): Todo @aws_cognito_user_pools @aws_iam
+  deleteTodo(condition: ModelTodoConditionInput, input: DeleteTodoInput!): Todo @aws_cognito_user_pools @aws_iam
+  updateTodo(condition: ModelTodoConditionInput, input: UpdateTodoInput!): Todo @aws_cognito_user_pools @aws_iam
+}
+
+type Query {
+  getTodo(id: ID!): Todo @aws_cognito_user_pools @aws_iam
+  listTodos(filter: ModelTodoFilterInput, limit: Int, nextToken: String): ModelTodoConnection @aws_cognito_user_pools @aws_iam
+}
+
+type Subscription {
+  onCreateTodo(filter: ModelSubscriptionTodoFilterInput, owner: String): Todo @aws_cognito_user_pools @aws_iam @aws_subscribe(mutations : ["createTodo"])
+  onDeleteTodo(filter: ModelSubscriptionTodoFilterInput, owner: String): Todo @aws_cognito_user_pools @aws_iam @aws_subscribe(mutations : ["deleteTodo"])
+  onUpdateTodo(filter: ModelSubscriptionTodoFilterInput, owner: String): Todo @aws_cognito_user_pools @aws_iam @aws_subscribe(mutations : ["updateTodo"])
+}
+
+type Todo @aws_cognito_user_pools @aws_iam {
+  content: String
+  createdAt: AWSDateTime!
+  id: ID!
+  isDone: Boolean!
+  owner: String
+  updatedAt: AWSDateTime!
+}
+
+enum ModelAttributeTypes {
+  _null
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+input CreateTodoInput {
+  content: String
+  id: ID
+  isDone: Boolean!
+}
+
+input DeleteTodoInput {
+  id: ID!
+}
+
+input ModelBooleanInput {
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  eq: Boolean
+  ne: Boolean
+}
+
+input ModelFloatInput {
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  between: [Float]
+  eq: Float
+  ge: Float
+  gt: Float
+  le: Float
+  lt: Float
+  ne: Float
+}
+
+input ModelIDInput {
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  beginsWith: ID
+  between: [ID]
+  contains: ID
+  eq: ID
+  ge: ID
+  gt: ID
+  le: ID
+  lt: ID
+  ne: ID
+  notContains: ID
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  between: [Int]
+  eq: Int
+  ge: Int
+  gt: Int
+  le: Int
+  lt: Int
+  ne: Int
+}
+
+input ModelSizeInput {
+  between: [Int]
+  eq: Int
+  ge: Int
+  gt: Int
+  le: Int
+  lt: Int
+  ne: Int
+}
+
+input ModelStringInput {
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  beginsWith: String
+  between: [String]
+  contains: String
+  eq: String
+  ge: String
+  gt: String
+  le: String
+  lt: String
+  ne: String
+  notContains: String
+  size: ModelSizeInput
+}
+
+input ModelSubscriptionBooleanInput {
+  eq: Boolean
+  ne: Boolean
+}
+
+input ModelSubscriptionFloatInput {
+  between: [Float]
+  eq: Float
+  ge: Float
+  gt: Float
+  in: [Float]
+  le: Float
+  lt: Float
+  ne: Float
+  notIn: [Float]
+}
+
+input ModelSubscriptionIDInput {
+  beginsWith: ID
+  between: [ID]
+  contains: ID
+  eq: ID
+  ge: ID
+  gt: ID
+  in: [ID]
+  le: ID
+  lt: ID
+  ne: ID
+  notContains: ID
+  notIn: [ID]
+}
+
+input ModelSubscriptionIntInput {
+  between: [Int]
+  eq: Int
+  ge: Int
+  gt: Int
+  in: [Int]
+  le: Int
+  lt: Int
+  ne: Int
+  notIn: [Int]
+}
+
+input ModelSubscriptionStringInput {
+  beginsWith: String
+  between: [String]
+  contains: String
+  eq: String
+  ge: String
+  gt: String
+  in: [String]
+  le: String
+  lt: String
+  ne: String
+  notContains: String
+  notIn: [String]
+}
+
+input ModelSubscriptionTodoFilterInput {
+  and: [ModelSubscriptionTodoFilterInput]
+  content: ModelSubscriptionStringInput
+  createdAt: ModelSubscriptionStringInput
+  id: ModelSubscriptionIDInput
+  isDone: ModelSubscriptionBooleanInput
+  or: [ModelSubscriptionTodoFilterInput]
+  owner: ModelStringInput
+  updatedAt: ModelSubscriptionStringInput
+}
+
+input ModelTodoConditionInput {
+  and: [ModelTodoConditionInput]
+  content: ModelStringInput
+  createdAt: ModelStringInput
+  isDone: ModelBooleanInput
+  not: ModelTodoConditionInput
+  or: [ModelTodoConditionInput]
+  owner: ModelStringInput
+  updatedAt: ModelStringInput
+}
+
+input ModelTodoFilterInput {
+  and: [ModelTodoFilterInput]
+  content: ModelStringInput
+  createdAt: ModelStringInput
+  id: ModelIDInput
+  isDone: ModelBooleanInput
+  not: ModelTodoFilterInput
+  or: [ModelTodoFilterInput]
+  owner: ModelStringInput
+  updatedAt: ModelStringInput
+}
+
+input UpdateTodoInput {
+  content: String
+  id: ID!
+  isDone: Boolean
+}

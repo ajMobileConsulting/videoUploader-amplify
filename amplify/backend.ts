@@ -3,8 +3,13 @@ import { auth } from './auth/resource';
 import { data } from './data/resource';
 import { storage } from "./storage/resource"
 
-defineBackend({
+const backend = defineBackend({
   auth,
   data,
   storage
 });
+
+const httpDataSource = backend.data.addHttpDataSource(
+  "BeadFormations",
+  "https://staging.beadformations.com"
+);

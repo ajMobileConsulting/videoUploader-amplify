@@ -9,6 +9,7 @@ import Amplify
 import Authenticator
 import AWSCognitoAuthPlugin
 import AWSS3StoragePlugin
+import AWSDataStorePlugin
 import SwiftUI
 
 @main
@@ -16,6 +17,7 @@ struct videoUploader_amplifyApp: App {
     init() {
         do {
             try Amplify.add(plugin: AWSCognitoAuthPlugin())
+            try Amplify.add(plugin: AWSDataStorePlugin(modelRegistration: AmplifyModels()))
             try Amplify.add(plugin: AWSS3StoragePlugin())
             try Amplify.configure(with: .amplifyOutputs)
         } catch {

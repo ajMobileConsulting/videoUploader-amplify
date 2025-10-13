@@ -7,15 +7,79 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BC118790-FC06-40BF-93E1-ACB3B2A1D8E0"
+            uuid = "C6FC8F8F-F8A7-4882-BF5C-1CB74FF014D2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "videoUploader-amplify/View/ContentView.swift"
+            filePath = "../../../../../Library/Developer/Xcode/DerivedData/videoUploader-amplify-duuyhnmmrzovdzdtcgxxxjroaiyy/SourcePackages/checkouts/amplify-swift/AmplifyPlugins/Storage/Sources/AWSS3StoragePlugin/Support/Internal/StorageMultipartUploadSession.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "468"
+            endingLineNumber = "468"
+            landmarkName = "pause()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "98EAC021-D2A2-4F2F-B4AF-D25F723FA097"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../Library/Developer/Xcode/DerivedData/videoUploader-amplify-duuyhnmmrzovdzdtcgxxxjroaiyy/SourcePackages/checkouts/amplify-swift/AmplifyPlugins/Storage/Sources/AWSS3StoragePlugin/Support/Internal/StorageMultipartUploadSession.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
+            landmarkName = "handle(multipartUploadEvent:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9CBD5785-488D-4E4A-BBC7-2DABC6E73CF7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../Library/Developer/Xcode/DerivedData/videoUploader-amplify-duuyhnmmrzovdzdtcgxxxjroaiyy/SourcePackages/checkouts/amplify-swift/AmplifyPlugins/Storage/Sources/AWSS3StoragePlugin/Support/Internal/StorageOperationReference.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "pause()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A465795B-A9FB-4D41-A9F6-484D88ADF19F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../Library/Developer/Xcode/DerivedData/videoUploader-amplify-duuyhnmmrzovdzdtcgxxxjroaiyy/SourcePackages/checkouts/amplify-swift/AmplifyPlugins/Storage/Sources/AWSS3StoragePlugin/Operation/AWSS3StorageUploadFileOperation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "pause()"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A2DAC869-9728-423B-8384-4F789369951D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "videoUploader-amplify/View/VideoUploader.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -23,17 +87,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6FC60D12-C028-4968-AF11-3316265AAEC3"
+            uuid = "F7EAE832-CB79-4604-9D71-CA0E03AC324A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "videoUploader-amplify/View/ContentView.swift"
+            filePath = "videoUploader-amplify/View/VideoUploader.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "init()"
-            landmarkType = "7">
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

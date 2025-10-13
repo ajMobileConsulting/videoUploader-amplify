@@ -12,7 +12,43 @@ const schema = a.schema({
       content: a.string(),
       isDone: a.boolean().required()
     })
-    .authorization((allow) => [allow.owner()])
+    .authorization((allow) => [allow.owner()]),
+
+    // WPPost: a.customType({
+    //   id: a.integer(),
+    //   date: a.date(),
+    //   date_gmt: a.datetime(),
+    //   title: a.string(),
+    //   content: a.string()
+    // }),
+
+
+    WPPages: a.customType({
+      id: a.integer(),
+      date: a.date(),
+      date_gmt: a.datetime(),
+      title: a.string(),
+      content: a.string()
+    }),
+
+    /*========
+      Queries
+    =========*/
+    // getAllWPPages: a.query()
+    // .returns(a.ref("WPPages").array())
+    // .authorization(allow => [allow.publicApiKey()]) // keep same auth for now
+    // .handler(
+    // a.handler.custom({
+    //   dataSource: "BeadFormations",
+    //   entry: "./listPages.ts", // point to your new handler file
+    // })
+    // ),
+
+
+    /*=======
+     Mutations
+    =========*/
+
 });
 
 export type Schema = ClientSchema<typeof schema>;

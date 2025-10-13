@@ -127,7 +127,7 @@
               "get",
               "list"
             ],
-            "entityidentity": [
+            "authenticated": [
               "get",
               "list",
               "write",

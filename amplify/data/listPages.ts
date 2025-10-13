@@ -1,6 +1,6 @@
 import { util } from "@aws-appsync/utils";
 
-export function request(ctx: any) {
+export function request(ctx) {
   return {
     method: "GET",
     resourcePath: "/wp-json/wp/v2/pages",
@@ -12,7 +12,7 @@ export function request(ctx: any) {
   };
 }
 
-export function response(ctx: any) {
+export function response(ctx) {
   if (ctx.error) {
     return util.error(ctx.error.message, ctx.error.type);
   }

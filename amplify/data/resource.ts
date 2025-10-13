@@ -34,7 +34,7 @@ const schema = a.schema({
     /*========
       Queries
     =========*/
-    getAllWPPages: a.query()
+    listPages: a.query()
     .returns(a.ref("WPPage").array())
     .authorization(allow => [allow.publicApiKey()]) // keep same auth for now
     .handler(

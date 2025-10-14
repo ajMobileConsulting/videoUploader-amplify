@@ -27,25 +27,25 @@ const schema = a.schema({
   //   author: a.string().required(),
   // }),
   
-  Page: a.customType({
-    id: a.integer(),
-    date: a.string(),
-    date_gmt: a.string(),
-    title: a.string(),
-    content: a.string()
-  }),
-  
-  getPage: a
-    .query()
-    .arguments({ id: a.id().required() })
-    .returns(a.ref("Page"))
-    .authorization(allow => [allow.publicApiKey()])
-    .handler(
-      a.handler.custom({
-        dataSource: "BeadFormations",
-        entry: "./getPage.js",
-      })
-    ),
+  // Page: a.customType({
+  //   id: a.integer(),
+  //   date: a.string(),
+  //   date_gmt: a.string(),
+  //   title: a.string(),
+  //   content: a.string()
+  // }),
+
+  // getPage: a
+  //   .query()
+  //   .arguments({ id: a.id().required() })
+  //   .returns(a.ref("Page"))
+  //   .authorization(allow => [allow.publicApiKey()])
+  //   .handler(
+  //     a.handler.custom({
+  //       dataSource: "BeadFormations",
+  //       entry: "./getPage.js",
+  //     })
+  //   ),
 
 
     // /*========

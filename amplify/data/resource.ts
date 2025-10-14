@@ -12,7 +12,7 @@ const schema = a.schema({
       content: a.string(),
       isDone: a.boolean().required()
     })
-    .authorization((allow) => [allow.owner()]),
+    .authorization(allow => [allow.publicApiKey()]),
 
     // WPPost: a.customType({
     //   id: a.integer(),
@@ -21,28 +21,45 @@ const schema = a.schema({
     //   title: a.string(),
     //   content: a.string()
     // }),
-
-
-    WPPage: a.customType({
-      id: a.integer(),
-      date: a.string(),
-      date_gmt: a.string(),
-      title: a.string(),
-      content: a.string()
-    }),
-
-    /*========
-      Queries
-    =========*/
-    listPages: a.query()
-    .returns(a.ref("WPPage").array())
-    .authorization(allow => [allow.publicApiKey()]) // keep same auth for now
+  //   Post: a.customType({
+  //   title: a.string(),
+  //   content: a.string(),
+  //   author: a.string().required(),
+  // }),
+  
+  Page: a.customType({
+    id: a.integer(),
+    date: a.string(),
+    date_gmt: a.string(),
+    title: a.string(),
+    content: a.string()
+  }),
+  
+  getPage: a
+    .query()
+    .arguments({ id: a.id().required() })
+    .returns(a.ref("Page"))
+    .authorization(allow => [allow.publicApiKey()])
     .handler(
-    a.handler.custom({
-      dataSource: "BeadFormations",
-      entry: "./listPages.ts", // point to your new handler file
-    })
+      a.handler.custom({
+        dataSource: "BeadFormations",
+        entry: "./getPage.js",
+      })
     ),
+
+
+    // /*========
+    //   Queries
+    // =========*/
+    // listPages: a.query()
+    // .returns(a.ref("Page").array())
+    // .authorization(allow => [allow.publicApiKey()]) // keep same auth for now
+    // .handler(
+    // a.handler.custom({
+    //   dataSource: "BeadFormations",
+    //   entry: "./listPages.ts", // point to your new handler file
+    // })
+    // ),
 
 
     /*=======
@@ -53,11 +70,23 @@ const schema = a.schema({
 
 export type Schema = ClientSchema<typeof schema>;
 
+// export const data = defineData({
+//   schema,
+//   authorizationModes: {
+//     defaultAuthorizationMode: 'userPool'
+//   }
+// });
 export const data = defineData({
   schema,
   authorizationModes: {
-    defaultAuthorizationMode: 'userPool'
-  }
+    // 👇 make API key the default or add as additional mode
+    defaultAuthorizationMode: 'apiKey',
+    apiKeyAuthorizationMode: {
+      // optional — set key expiration (in days)
+      expiresInDays: 365,
+      description: 'Public API key for read-only WP endpoints',
+    },
+  },
 });
 
 /*== STEP 2 ===============================================================

@@ -1,0 +1,9 @@
+query GetPage {
+  getPage(id: 5643) {
+    content
+    date
+    date_gmt
+    id
+    title
+  }
+}

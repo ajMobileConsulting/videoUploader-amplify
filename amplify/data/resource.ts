@@ -7,12 +7,12 @@ specifies that any user authenticated via an API key can "create", "read",
 "update", and "delete" any "Todo" records.
 =========================================================================*/
 const schema = a.schema({
-  Todo: a
-    .model({
-      content: a.string(),
-      isDone: a.boolean().required()
-    })
-    .authorization(allow => [allow.publicApiKey()]),
+  // Todo: a
+  //   .model({
+  //     content: a.string(),
+  //     isDone: a.boolean().required()
+  //   })
+  //   .authorization(allow => [allow.publicApiKey()]),
 
     // WPPost: a.customType({
     //   id: a.integer(),
@@ -27,39 +27,34 @@ const schema = a.schema({
   //   author: a.string().required(),
   // }),
   
-  // Page: a.customType({
-  //   id: a.integer(),
-  //   date: a.string(),
-  //   date_gmt: a.string(),
-  //   title: a.string(),
-  //   content: a.string()
-  // }),
+  Page: a.customType({
+    id: a.integer(),
+    date: a.string(),
+    date_gmt: a.string(),
+    title: a.string(),
+    content: a.string()
+  }),
 
-  // getPage: a
+  getPage: a
+    .query()
+    .arguments({ id: a.id().required() })
+    .returns(a.ref("Page")) 
+    .authorization(allow => [allow.publicApiKey()])
+    .handler(
+      a.handler.custom({
+        dataSource: "BeadFormations",
+        entry: "./getPage.js",
+      })
+    ),
+
+  //   listPages: a
   //   .query()
-  //   .arguments({ id: a.id().required() })
-  //   .returns(a.ref("Page"))
-  //   .authorization(allow => [allow.publicApiKey()])
-  //   .handler(
-  //     a.handler.custom({
-  //       dataSource: "BeadFormations",
-  //       entry: "./getPage.js",
-  //     })
-  //   ),
-
-
-    // /*========
-    //   Queries
-    // =========*/
-    // listPages: a.query()
-    // .returns(a.ref("Page").array())
-    // .authorization(allow => [allow.publicApiKey()]) // keep same auth for now
-    // .handler(
-    // a.handler.custom({
-    //   dataSource: "BeadFormations",
-    //   entry: "./listPages.ts", // point to your new handler file
-    // })
-    // ),
+  // .returns(a.ref("Page").array())
+  // .authorization((allow) => [allow.publicApiKey()])
+  // .handler(a.handler.custom({
+  //   dataSource: "BeadFormations",
+  //   entry: "./listPages.js",
+  // }))
 
 
     /*=======
@@ -89,7 +84,7 @@ export const data = defineData({
   },
 });
 
-/*== STEP 2 ===============================================================
+/*== STEP 2  ===============================================================
 Go to your frontend source code. From your client-side code, generate a
 Data client to make CRUDL requests to your table. (THIS SNIPPET WILL ONLY
 WORK IN THE FRONTEND CODE FILE.)

@@ -11,5 +11,5 @@ const backend = defineBackend({
 
 const httpDataSource = backend.data.addHttpDataSource(
   "BeadFormations",
-  "https://staging.beadformations.com/wp-json"
+  "https://staging.beadformations.com"
 );

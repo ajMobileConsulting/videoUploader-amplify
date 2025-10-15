@@ -43,6 +43,8 @@ struct ContentView: View {
                 }
                 .tag(2)
         }
-
+        .task {
+            await PageViewModel().fetchPage(id: "5643")
+        }
     }
 }

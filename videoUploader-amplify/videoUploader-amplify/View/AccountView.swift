@@ -27,6 +27,11 @@ struct AccountView: View {
                     }
                 }
             }
+            .onAppear {
+                Task {
+                    await PageViewModel().fetchPage(id: "5643")
+                }
+            }
         }
         .navigationTitle("Account")
     }

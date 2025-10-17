@@ -3,8 +3,12 @@ import { util } from "@aws-appsync/utils";
 export function request(ctx) {
   return {
     method: "GET",
-    resourcePath: "/wp/v2/pages",
-    params: { headers: { "Content-Type": "application/json" } },
+    resourcePath: "/wp-json/wp/v2/pages",
+    params: {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    },
   };
 }
 
@@ -17,14 +21,19 @@ export function response(ctx) {
 
   if (statusCode === 200 && body) {
     var pages = JSON.parse(body);
-    return pages.map(function (page) {
-      return {
-        id: page.id,
-        title: page.title && page.title.rendered ? page.title.rendered : "",
-      };
-    });
+
+    var result = pages.map(data => ({
+      id: data.id,
+      title: data.title.rendered,
+      date: data.date,
+      date_gmt: data.date_gmt,
+      content: data.content.rendered
+    }));
+
+    return result;
+  } else {
+    return util.appendError(body, statusCode);
   }
-  return util.appendError(body || "Unknown error", String(statusCode || 500));
+
 }
 
-module.exports = { request, response };   // ✅ absolutely required 

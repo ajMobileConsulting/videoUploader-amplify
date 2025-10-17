@@ -47,6 +47,19 @@ const schema = a.schema({
       })
     ),
 
+      listPages: a
+    .query()
+  //  .arguments({ id: a.id().required() })
+    .returns(a.ref("Page").array()) 
+    .authorization(allow => [allow.publicApiKey()])
+    .handler(
+      a.handler.custom({
+        dataSource: "BeadFormations",
+        entry: "./listPages.js",
+      })
+    ),
+
+    /*=======
   //   listPages: a
   //   .query()
   // .returns(a.ref("Page").array())
@@ -57,7 +70,8 @@ const schema = a.schema({
   // }))
 
 
-    /*=======
+
+
      Mutations
     =========*/
 
